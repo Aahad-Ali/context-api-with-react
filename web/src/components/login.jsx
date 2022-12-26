@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { GlobalContext } from '../context/context';
+import { useContext } from "react";
 import { Button, TextField } from "@mui/material";
 
 import "./login.css";
@@ -8,6 +9,8 @@ import axios from "axios";
 const baseUrl = "http://localhost:5001";
 
 function Login() {
+  let { state, dispatch } = useContext(GlobalContext);
+
   const [result, setResult] = useState("");
 
   const [email, setEmail] = useState("");
@@ -40,6 +43,7 @@ function Login() {
   return (
     <>
       <h4>This is Login page</h4>
+      {state.text}
 
       <form onSubmit={loginHandler} className="loginForm">
         <TextField

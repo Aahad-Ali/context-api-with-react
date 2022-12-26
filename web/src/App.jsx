@@ -1,6 +1,6 @@
 import './App.css';
-import { useEffect, useState } from "react";
-
+import { useEffect, useState,useContext } from "react";
+import { GlobalContext } from '../context/context';
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 
@@ -27,7 +27,7 @@ function App() {
     <div>
 
       {
-        (isLogin) ?
+        (state.isLogin) ?
           <ul className='navBar'>
             <li> <Link to={`/`}>Home</Link> </li>
             <li> <Link to={`/gallery`}>Gallery</Link> </li>
@@ -42,7 +42,7 @@ function App() {
           </ul>
       }
 
-      {(isLogin) ?
+      {(state.isLogin) ?
 
         <Routes>
           <Route path="/" element={<Home />} />
