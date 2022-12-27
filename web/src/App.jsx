@@ -1,8 +1,8 @@
-import './App.css';
-import { useEffect, useState,useContext } from "react";
-import { GlobalContext } from '../context/context';
+import "./App.css";
+import { useEffect, useState, useContext } from "react";
+import { GlobalContext } from "./context/context";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
-
+import axios from "axios";
 
 import Home from "./components/home";
 import About from "./components/about";
@@ -10,68 +10,107 @@ import Gallery from "./components/gallery";
 import Login from "./components/login";
 import Signup from "./components/signup";
 
-
 function App() {
+  // const [isLogin, setIsLogin] = useState(false);
+  let { state, dispatch } = useContext(GlobalContext);
 
-  const [isLogin, setIsLogin] = useState(false);
   const [fullName, setFullName] = useState("");
 
+  const logoutHandler = () => {};
 
-  const logoutHandler = () => {
+  useEffect(() => {
+    const baseUrl = "http://localhost:5001";
+
+    const getProfile = async () => {
+      try {
+        let response = await axios.get(`${baseUrl}/products`, {
+          withCredentials: true
+        })
+
+        console.log("response: ", response);
 
 
-  }
+        dispatch({
+          type: 'USER_LOGIN'
+        })
+      } catch (error) {
 
+        console.log("axios error: ", error);
+
+        dispatch({
+          type: 'USER_LOGOUT'
+        })
+      }
+
+    };
+    getProfile();
+  }, []);
 
   return (
     <div>
-
-      {
-        (state.isLogin) ?
-          <ul className='navBar'>
-            <li> <Link to={`/`}>Home</Link> </li>
-            <li> <Link to={`/gallery`}>Gallery</Link> </li>
-            <li> <Link to={`/about`}>About</Link> </li>
-            <li> <Link to={`/profile`}>Profile</Link> </li>
-            <li> {fullName} <button onClick={logoutHandler}>Logout</button> </li>
-          </ul>
-          :
-          <ul className='navBar'>
-            <li> <Link to={`/`}>Login</Link> </li>
-            <li> <Link to={`/signup`}>Signup</Link> </li>
-          </ul>
-      }
-
-      {(state.isLogin) ?
-
+      {state.isLogin === true ? (
+        <ul className="navBar">
+          <li>
+            <Link to={`/`}>Home</Link>
+          </li>
+          <li>
+            <Link to={`/gallery`}>Gallery</Link>
+          </li>
+          <li>
+            <Link to={`/about`}>About</Link>
+          </li>
+          <li>
+            <Link to={`/profile`}>Profile</Link>
+          </li>
+          <li>
+            {fullName} <button onClick={logoutHandler}>Logout</button>
+          </li>
+        </ul>
+      ) : null}
+      {state.isLogin === false ? (
+        <ul className="navBar">
+          <li>
+            <Link to={`/`}>Login</Link>
+          </li>
+          <li>
+            <Link to={`/signup`}>Signup</Link>
+          </li>
+        </ul>
+      ) : null}
+      {state.isLogin === true ? (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
-        :
+      ) : null}
+      {state.isLogin === false ? (
         <Routes>
-          <Route path="/" element={<Login set={setIsLogin}/>} />
+          <Route path="/" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
-      }
-
+      ) : null}
+      {state.isLogin === null ? (
+        <div className="loader">
+          <img
+            src="https://i.pinimg.com/originals/49/e9/d6/49e9d662d2f99e8d945c8b21bd2cde85.gif"
+            alt="...loading"
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
 
 export default App;
 
-
-
 // import "./App.css";
 // import { useFormik } from "formik";
 // import * as yup from "yup";
 // import axios from "axios";
 // import { useEffect, useState } from "react";
-
 
 // function App() {
 //   const [products, setProducts] = useState([]);
@@ -383,8 +422,3 @@ export default App;
 // }
 
 // export default App;
-
-
-
-
-

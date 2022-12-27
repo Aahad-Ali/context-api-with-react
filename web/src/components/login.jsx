@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { GlobalContext } from '../context/context';
-import { useContext } from "react";
+import { useState ,useContext} from "react";
+import { GlobalContext } from "../context/context";
 import { Button, TextField } from "@mui/material";
 
 import "./login.css";
@@ -30,6 +29,11 @@ function Login() {
           withCredentials: true,
         }
       );
+
+      dispatch({
+        type: "USER_LOGIN",
+        payload: null,
+      });
 
       console.log("login successful");
       setResult("login successful");
