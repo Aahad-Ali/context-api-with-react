@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVSYCka2cVdm9NTjQU65Vhv7oOpTQrMCZ4XQ&usqp=CAU'); */
+  background-color: rgb(255, 244, 231);
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+.container-head {
+  background-color: transparent;
+}
+.btn {
+  background-color: rgb(255, 96, 90);
+  border-radius: 30px;
+  color: #fff;
+}
+/* .contact {
+  margin-right: 50%;
+} */
+/* .side-img {
+  transform: translate(50%,50%);
+  
+} */
+.card-img-top{
+  border-radius: 50%;
+}
+.navbar{
+  background-color: #fff;
+  border-radius: 20px;
+}.nav-item{
+  font-weight: bold;
+  font-size: medium;
+}
+.contact-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius:0 0 20px 20px ;
+
+}
+.nav-link{
+  color: #fff;
+}
+.c-main{
+margin-top: 50px;
+  border-radius: 20px;
+}
+.carousel-dark{
+  border-radius: 20px;
+}
+/* .content{
+  background-color: #fff;
+} */
+.card {
+  width: 18rem;
+  border: none;
+
+}
+.col .card-deck .border-out .card-img-top{
+  border-radius: 50%;
+}
+.card img{
+  border-radius: 10px;
+}
+.footer {
+  background-color: rgb(255, 236, 211);
+  padding: 20px;
+  border-radius: 20px;
+}
+.list-group h3 {
+  color: rgb(43, 177, 255);
+  font-weight: bold;
+}
+.list {
+  background-color: rgb(255, 236, 211);
+}
+.list-group {
+  background-color: rgb(255, 236, 211);
+}
+.list-group-item {
+  background-color: rgb(255, 236, 211);
+}
+.contact h1 {
+  font-weight: bold;
+}
+.footer-btn {
+  background-color: rgb(255, 96, 90);
+}
+.btn-footer {
+  display: flex;
+  justify-content: center;
+}
+.success{
+  font-weight: bold;
+  
+}
+.center{
+  color: red;
+}
+.copyright{
+  background-color: rgb(255, 236, 213);
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+.rounded{
+  height: 24vh;
+}
+.footer .row .col .card .card-body{
+  background-color:rgb(255, 236, 211) ;
+}
+
+@media screen and (max-width: 340px) {
+  .text-center img{
+    width: 70vw;
+  }
+  .card{
+    width: 80vw;
+  }
+}
+.nav-item:hover{
+  background-color: rgb(255, 225, 186);
+  border-radius: 30px;
+}

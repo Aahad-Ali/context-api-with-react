@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./signup.css";
 
 const baseUrl = "http://localhost:5001";
 
@@ -34,8 +35,9 @@ function Signup() {
     <>
       <h4>This is Signup page</h4>
 
-      <form onSubmit={signupHandler}>
-        Name:{" "}
+
+      {/* <form onSubmit={signupHandler}> */}
+        {/* Name:
         <input
           type="text"
           name="name"
@@ -45,7 +47,7 @@ function Signup() {
           }}
         />
         <br />
-        Email:{" "}
+        Email:
         <input
           type="email"
           name="username"
@@ -56,7 +58,7 @@ function Signup() {
           }}
         />
         <br />
-        Password:{" "}
+        Password:
         <input
           type="password"
           name="new-password"
@@ -67,7 +69,7 @@ function Signup() {
           }}
         />
         <br />
-        Password:{" "}
+        Password:
         <input
           type="password"
           name="new-password"
@@ -75,9 +77,64 @@ function Signup() {
           placeholder="confirm password"
         />
         <br />
-        <button type="submit">Signup</button>
+        <button type="submit">Signup</button> */}
+     
+
+      {/* <div id="main1">
+        <span id="validation1"></span>
+        <input
+          className="signupForm"
+          type="userName"
+          name="userName"
+          id="userName"
+          placeholder="username"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+        <span id="validation2"></span>
+        <input
+          className="signupForm"
+          type="email"
+          name="email"
+          id="email"
+          autoComplete="username"
+          placeholder="email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+        <span id="validation3"></span>
+        <input
+          className="signupForm"
+          type="password"
+          name="password"
+          id="password1"
+          placeholder="Password"
+          autoComplete="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+
+        <input
+          className="signupForm"
+          type="password"
+          name="password"
+          id="ConfirmPassword"
+          placeholder="Confirm Password"
+          autoComplete="password"
+
+        />
+
+
+        <button type="submit" id="sub">
+          
+          SignUp
+        </button>
+      </div>
       </form>
-      <p>{result}</p>
+      <p>{result}</p> */}
     </>
   );
 }

@@ -4,11 +4,13 @@ import { GlobalContext } from "./context/context";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
-import Home from "./components/home";
+// import Home from "./components/home";
 import About from "./components/about";
 import Gallery from "./components/gallery";
 import Login from "./components/login";
 import Signup from "./components/signup";
+import Content from "./components/content/content";
+
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false);
@@ -49,23 +51,25 @@ function App() {
   return (
     <div>
       {state.isLogin === true ? (
-        <ul className="navBar">
-          <li>
-            <Link to={`/`}>Home</Link>
-          </li>
-          <li>
-            <Link to={`/gallery`}>Gallery</Link>
-          </li>
-          <li>
-            <Link to={`/about`}>About</Link>
-          </li>
-          <li>
-            <Link to={`/profile`}>Profile</Link>
-          </li>
-          <li>
-            {fullName} <button onClick={logoutHandler}>Logout</button>
-          </li>
-        </ul>
+      <Content />
+
+        // <ul className="navBar">
+        //   <li>
+        //     <Link to={`/`}>Home</Link>
+        //   </li>
+        //   <li>
+        //     <Link to={`/gallery`}>Gallery</Link>
+        //   </li>
+        //   <li>
+        //     <Link to={`/about`}>About</Link>
+        //   </li>
+        //   <li>
+        //     <Link to={`/profile`}>Profile</Link>
+        //   </li>
+        //   <li>
+        //     {fullName} <button onClick={logoutHandler}>Logout</button>
+        //   </li>
+        // </ul>
       ) : null}
       {state.isLogin === false ? (
         <ul className="navBar">
@@ -77,14 +81,14 @@ function App() {
           </li>
         </ul>
       ) : null}
-      {state.isLogin === true ? (
+      {/* {state.isLogin === true ? (
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Content />} />
           <Route path="about" element={<About />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
-      ) : null}
+      ) : null} */}
       {state.isLogin === false ? (
         <Routes>
           <Route path="/" element={<Login />} />

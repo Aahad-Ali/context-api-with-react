@@ -1,4 +1,4 @@
-import { useState ,useContext} from "react";
+import { useState, useContext } from "react";
 import { GlobalContext } from "../context/context";
 import { Button, TextField } from "@mui/material";
 
@@ -44,11 +44,20 @@ function Login() {
     // e.reset();
   };
 
+
+//   if(document.getElementById('exampleInputEmail1') === ""){
+// '<span> </span>'
+    
+//   }
   return (
     <>
-      <h4>This is Login page</h4>
-      {state.text}
-
+      <div className="container">
+     <div className="row">
+      <div className="col">
+           {/* <h4>This is Login page</h4> */}
+           <h2>This is Login page</h2>
+        {state.text}
+        {/* 
       <form onSubmit={loginHandler} className="loginForm">
         <TextField
           className="TextField"
@@ -84,9 +93,49 @@ function Login() {
         <Button variant="outlined" type="submit">
           Login
         </Button>
-      </form>
+      </form> */}
 
-      <p>{result}</p>
+        {/* <p>{result}</p> */}
+
+        <form onSubmit={loginHandler}>
+          <div className="mb-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            {/* <div id="emailHelp" className="form-text">
+              We'll never share your email with anyone else.
+            </div> */}
+          </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="exampleInputPassword1"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+          </div>
+
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+     </div>
+      </div>
     </>
   );
 }
