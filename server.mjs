@@ -18,8 +18,9 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: ["https://context-api-with-jwt.cyclic.app/", "*"],
+    origin: ["http://localhost:3000", "*"],
     credentials: true,
+    origin:true,
   })
 );
 
