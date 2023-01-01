@@ -2,7 +2,14 @@ import { useState } from "react";
 import axios from "axios";
 import "./signup.css";
 
-const baseUrl = "http://localhost:5001";
+// const baseUrl = "http://localhost:5001";
+
+let baseUrl = "";
+if (window.location.href.split(":")[0] === "http") {
+  baseUrl = `http://localhost:5001/api/v1`;
+} else {
+  baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
+}
 
 function Signup() {
   const [result, setResult] = useState("");
@@ -32,84 +39,54 @@ function Signup() {
   };
 
   return (
-    <>
+    <div className="container">
       <h4>This is Signup page</h4>
       <form onSubmit={signupHandler}>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">
-            @
-          </span>
+        <div className="input-group mb-3">
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Username"
             aria-label="Username"
             aria-describedby="basic-addon1"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
           />
         </div>
 
-        <div class="input-group mb-3">
+        <div className="input-group mb-3">
           <input
-            type="text"
-            class="form-control"
-            placeholder="Recipient's username"
-            aria-label="Recipient's username"
+            type="email"
+            className="form-control"
+            placeholder="email"
+            aria-label="email"
             aria-describedby="basic-addon2"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
-          <span class="input-group-text" id="basic-addon2">
-            @example.com
-          </span>
         </div>
 
-        <div class="mb-3">
-          <label for="basic-url" class="form-label">
-            Your vanity URL
-          </label>
-          <div class="input-group">
-            <span class="input-group-text" id="basic-addon3">
-              https://example.com/users/
-            </span>
-            <input
-              type="text"
-              class="form-control"
-              id="basic-url"
-              aria-describedby="basic-addon3"
-            />
-          </div>
-          <div class="form-text">
-            Example help text goes outside the input group.
-          </div>
-        </div>
-
-        <div class="input-group mb-3">
-          <span class="input-group-text">$</span>
+        <div className="input-group mb-3">
           <input
-            type="text"
-            class="form-control"
-            aria-label="Amount (to the nearest dollar)"
+            type="password"
+            className="form-control"
+            placeholder="password"
+            aria-label="password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
           />
-          <span class="input-group-text">.00</span>
-        </div>
-
-        <div class="input-group mb-3">
           <input
-            type="text"
-            class="form-control"
-            placeholder="Username"
-            aria-label="Username"
-          />
-          <span class="input-group-text">@</span>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Server"
-            aria-label="Server"
+            type="password"
+            className="form-control"
+            placeholder="confirm password"
+            aria-label="password"
           />
         </div>
-
-        <div class="input-group">
-          <span class="input-group-text">With textarea</span>
-          <textarea class="form-control" aria-label="With textarea"></textarea>
+        <div>
+          <button type="submit" className="btn btn-primary">Signup</button>
         </div>
       </form>
 
@@ -211,7 +188,7 @@ function Signup() {
       </div>
       </form>
       <p>{result}</p> */}
-    </>
+    </div>
   );
 }
 
