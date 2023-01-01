@@ -2,14 +2,14 @@ import { useState } from "react";
 import axios from "axios";
 import "./signup.css";
 
-// const baseUrl = "http://localhost:5001";
+const baseUrl = "http://localhost:5001/api/v1";
 
-let baseUrl = "";
-if (window.location.href.split(":")[0] === "http") {
-  baseUrl = `http://localhost:5001/api/v1`;
-} else {
-  baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
-}
+// let baseUrl = "";
+// if (window.location.href.split(":")[0] === "http") {
+//   baseUrl = `http://localhost:5001/api/v1`;
+// } else {
+//   baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
+// }
 
 function Signup() {
   const [result, setResult] = useState("");
@@ -78,12 +78,12 @@ function Signup() {
               setPassword(e.target.value);
             }}
           />
-          <input
+          {/* <input
             type="password"
             className="form-control"
             placeholder="confirm password"
             aria-label="password"
-          />
+          /> */}
         </div>
         <div>
           <button type="submit" className="btn btn-primary">Signup</button>

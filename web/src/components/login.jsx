@@ -5,15 +5,16 @@ import { Button, TextField } from "@mui/material";
 import "./login.css";
 import axios from "axios";
 
-// const baseUrl = "http://localhost:5001";
+const baseUrl = "http://localhost:5001/api/v1";
 
-let baseUrl = "";
-if (window.location.href.split(":")[0] === "http") {
-  baseUrl = `http://localhost:5001/api/v1`;
-}
-else {
-  baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
-}
+
+// let baseUrl = "";
+// if (window.location.href.split(":")[0] === "http") {
+//   baseUrl = `http://localhost:5001/api/v1`;
+// }
+// else {
+//   baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
+// }
 
 function Login() {
   let { state, dispatch } = useContext(GlobalContext);
