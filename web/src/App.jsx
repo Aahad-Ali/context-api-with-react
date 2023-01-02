@@ -15,10 +15,10 @@ import Content from "./components/content/content";
 
 let baseUrl = "";
 if (window.location.href.split(":")[0] === "http") {
-  baseUrl = `http://localhost:5001/api/v1`;
+  baseUrl = `http://localhost:5001`;
 }
 else {
-  baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
+  baseUrl = `https://context-api-with-jwt.cyclic.app`;
 }
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
 
     const getProfile = async () => {
       try {
-        let response = await axios.get(`${baseUrl}/products`, {
+        let response = await axios.get(`${baseUrl}/api/v1/products`, {
           withCredentials: true,
         });
 
