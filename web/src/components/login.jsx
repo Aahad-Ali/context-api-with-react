@@ -9,10 +9,10 @@ import axios from "axios";
 
 let baseUrl = "";
 if (window.location.href.split(":")[0] === "http") {
-  baseUrl = `http://localhost:5001/api/v1`;
+  baseUrl = `http://localhost:5001`;
 }
 else {
-  baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
+  baseUrl = `https://context-api-with-jwt.cyclic.app`;
 }
 
 function Login() {
@@ -28,7 +28,7 @@ function Login() {
 
     try {
       let response = await axios.post(
-        `${baseUrl}/login`,
+        `${baseUrl}/api/v1/login`,
         {
           email: email,
           password: password,
