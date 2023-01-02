@@ -11,15 +11,15 @@ import Login from "./components/login";
 import Signup from "./components/signup";
 import Content from "./components/content/content";
 
-const baseUrl = "http://localhost:5001/api/v1";
+// const baseUrl = "http://localhost:5001/api/v1";
 
-// let baseUrl = "";
-// if (window.location.href.split(":")[0] === "http") {
-//   baseUrl = `http://localhost:5001/api/v1`;
-// }
-// else {
-//   baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
-// }
+let baseUrl = "";
+if (window.location.href.split(":")[0] === "http") {
+  baseUrl = `http://localhost:5001/api/v1`;
+}
+else {
+  baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
+}
 
 function App() {
   // const [isLogin, setIsLogin] = useState(false);
