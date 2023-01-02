@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import path from 'path';
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
@@ -20,7 +21,7 @@ app.use(
   cors({
     origin: ["http://localhost:3000", "*"],
     credentials: true,
-    
+    origin: true,
   })
 );
 
@@ -68,11 +69,9 @@ app.post("/api/v1/signup", (req, res) => {
       if (user) {
         // user already exist
         console.log("user already exist: ", user);
-        res
-          .status(400)
-          .send({
-            message: "user already exist,, please try a different email",
-          });
+        res.status(400).send({
+          message: "user already exist,, please try a different email",
+        });
         return;
       } else {
         // user not already exist
@@ -187,14 +186,21 @@ app.post("/api/v1/login", (req, res) => {
 
 app.post("/api/v1/logout", (req, res) => {
   res.cookie("Token", "", {
-    maxAge: 1,
     httpOnly: true,
+    sameSite:true,
+    secure:true,
   });
+  res.cookie("Token","",{
+    maxAge:1,
+    httpOnly:true,
+    sameSite:'none',
+    secure:true,
+  })
 
   res.send({ message: "Logout successful" });
 });
 
-app.use('/api/v1',(req, res, next) => {
+app.use("/api/v1", (req, res, next) => {
   console.log("req.cookies: ", req.cookies);
 
   if (!req?.cookies?.Token) {
@@ -381,6 +387,11 @@ app.put("/api/v1/product/:id", async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+const __dirname = path.resolve();
+
+app.use("/", express.static(path.join(__dirname, "./web/build")));
+app.use("*", express.static(path.join(__dirname, "./web/build")));
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 mongoose.connect(mongodbURI);

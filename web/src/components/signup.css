@@ -115,3 +115,10 @@ p {
 #heading {
     font-size: 30px;
 }
+.signup-page{
+    padding: 20px;
+}
+.signup-heading{
+    font-weight: bold;
+    
+}

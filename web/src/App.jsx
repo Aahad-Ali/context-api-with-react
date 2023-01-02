@@ -11,9 +11,7 @@ import Login from "./components/login";
 import Signup from "./components/signup";
 import Content from "./components/content/content";
 
-
 const baseUrl = "http://localhost:5001/api/v1";
-
 
 // let baseUrl = "";
 // if (window.location.href.split(":")[0] === "http") {
@@ -37,24 +35,21 @@ function App() {
     const getProfile = async () => {
       try {
         let response = await axios.get(`${baseUrl}/products`, {
-          withCredentials: true
-        })
+          withCredentials: true,
+        });
 
         console.log("response: ", response);
 
-
         dispatch({
-          type: 'USER_LOGIN'
-        })
+          type: "USER_LOGIN",
+        });
       } catch (error) {
-
         console.log("axios error: ", error);
 
         dispatch({
-          type: 'USER_LOGOUT'
-        })
+          type: "USER_LOGOUT",
+        });
       }
-
     };
     getProfile();
   }, []);
@@ -62,36 +57,39 @@ function App() {
   return (
     <div>
       {state.isLogin === true ? (
-      <Content />
-
-        // <ul className="navBar">
-        //   <li>
-        //     <Link to={`/`}>Home</Link>
-        //   </li>
-        //   <li>
-        //     <Link to={`/gallery`}>Gallery</Link>
-        //   </li>
-        //   <li>
-        //     <Link to={`/about`}>About</Link>
-        //   </li>
-        //   <li>
-        //     <Link to={`/profile`}>Profile</Link>
-        //   </li>
-        //   <li>
-        //     {fullName} <button onClick={logoutHandler}>Logout</button>
-        //   </li>
-        // </ul>
-      ) : null}
+        <Content />
+      ) : // <ul className="navBar">
+      //   <li>
+      //     <Link to={`/`}>Home</Link>
+      //   </li>
+      //   <li>
+      //     <Link to={`/gallery`}>Gallery</Link>
+      //   </li>
+      //   <li>
+      //     <Link to={`/about`}>About</Link>
+      //   </li>
+      //   <li>
+      //     <Link to={`/profile`}>Profile</Link>
+      //   </li>
+      //   <li>
+      //     {fullName} <button onClick={logoutHandler}>Logout</button>
+      //   </li>
+      // </ul>
+      null}
       {state.isLogin === false ? (
-        <ul className="navBar">
-          <li>
-            <Link to={`/`}>Login</Link>
-          </li>
-          <li>
-            <Link to={`/signup`}>Signup</Link>
-          </li>
-        </ul>
+        <div className="togglor">
+          <ul className="navBar">
+            <button className="btn togglor-login">
+              <Link to={`/`}>Login</Link>
+            </button>
+
+            <button className="btn togglor-signup">
+              <Link to={`/signup`}>Signup</Link>
+            </button>
+          </ul>
+        </div>
       ) : null}
+
       {/* {state.isLogin === true ? (
         <Routes>
           <Route path="/" element={<Content />} />

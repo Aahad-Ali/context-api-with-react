@@ -3,6 +3,9 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import { useContext } from "react";
+import { GlobalContext } from "../../context/context";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBdbX2P4j86OW9KPKQ75hMh9xj-No5l-Dg",
@@ -18,7 +21,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+const baseUrl = "http://localhost:5001/api/v1";
+
 function App() {
+  let { state, dispatch } = useContext(GlobalContext);
+
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -42,6 +49,20 @@ function App() {
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
+    }
+  };
+
+  const logoutHandler = async (e) => {
+    e.preventDefault()
+    try {
+      let response = await axios.post(`${baseUrl}/logout`, {
+        withCredentials: true,
+      });
+      dispatch({
+        type: "USER_LOGOUT",
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -95,6 +116,15 @@ function App() {
                     <a className="nav-link active mx-4 my-3">Link</a>
                   </li>
                 </ul>
+                <form className="d-flex">
+                  <button
+                    className="btn btn-outline-success"
+                    onClick={logoutHandler}
+                    type="logout"
+                  >
+                    logout
+                  </button>
+                </form>
               </div>
             </div>
           </nav>
@@ -256,7 +286,7 @@ function App() {
           <div className="container">
             <div className="row">
               <h2 className="title my-3 success">
-               <i> Successful teachers successful students</i>
+                <i> Successful teachers successful students</i>
               </h2>
               <div className="col br-img my-5">
                 <div className="card-deck">
@@ -267,7 +297,9 @@ function App() {
                       alt="..."
                     />
                     <div className="card-body">
-                      <h5 className="card-title text-center"><strong> Sir Inzamam Malik</strong></h5>
+                      <h5 className="card-title text-center">
+                        <strong> Sir Inzamam Malik</strong>
+                      </h5>
                       {/* <p className="card-text">Teacher</p> */}
                     </div>
                   </div>
@@ -284,7 +316,9 @@ function App() {
                       alt="..."
                     />
                     <div className="card-body">
-                      <h5 className="card-title text-center"><strong> Sir Salman Zafar</strong></h5>
+                      <h5 className="card-title text-center">
+                        <strong> Sir Salman Zafar</strong>
+                      </h5>
                       {/* <p className="card-text">Associate</p> */}
                     </div>
                   </div>
@@ -301,7 +335,9 @@ function App() {
                       alt="..."
                     />
                     <div className="card-body">
-                      <h5 className="card-title text-center"><strong> Sir Saad Ahmed</strong></h5>
+                      <h5 className="card-title text-center">
+                        <strong> Sir Saad Ahmed</strong>
+                      </h5>
                       {/* <p className="card-text">Associate</p> */}
                     </div>
                   </div>
@@ -318,7 +354,9 @@ function App() {
                       alt="..."
                     />
                     <div className="card-body">
-                      <h5 className="card-title text-center"><strong> Sir Siddique</strong></h5>
+                      <h5 className="card-title text-center">
+                        <strong> Sir Siddique</strong>
+                      </h5>
                       {/* <p className="card-text">Associate</p> */}
                     </div>
                   </div>
@@ -381,7 +419,9 @@ function App() {
               </div>
             </div>
             <div className="btn-footer my-3">
-              <a href="#"><button className="btn footer-btn">Get Quote</button></a>
+              <a href="#">
+                <button className="btn footer-btn">Get Quote</button>
+              </a>
             </div>
           </div>
         </div>

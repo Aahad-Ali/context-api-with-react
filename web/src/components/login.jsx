@@ -7,7 +7,6 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:5001/api/v1";
 
-
 // let baseUrl = "";
 // if (window.location.href.split(":")[0] === "http") {
 //   baseUrl = `http://localhost:5001/api/v1`;
@@ -53,20 +52,19 @@ function Login() {
     // e.reset();
   };
 
+  //   if(document.getElementById('exampleInputEmail1') === ""){
+  // '<span> </span>'
 
-//   if(document.getElementById('exampleInputEmail1') === ""){
-// '<span> </span>'
-    
-//   }
+  //   }
   return (
     <>
-      <div className="container">
-     <div className="row">
-      <div className="col">
-           {/* <h4>This is Login page</h4> */}
-           <h2>This is Login page</h2>
-        {state.text}
-        {/* 
+      <div className="container login-page">
+        <div className="row">
+          <div className="col">
+            {/* <h4>This is Login page</h4> */}
+            <h1 className="login-heading">This is Login page</h1>
+            {state.text}
+            {/* 
       <form onSubmit={loginHandler} className="loginForm">
         <TextField
           className="TextField"
@@ -104,46 +102,46 @@ function Login() {
         </Button>
       </form> */}
 
-        {/* <p>{result}</p> */}
+            {/* <p>{result}</p> */}
 
-        <form onSubmit={loginHandler}>
-          <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-            {/* <div id="emailHelp" className="form-text">
+            <form onSubmit={loginHandler}>
+              <div className="mb-3">
+                <label htmlFor="exampleInputEmail1" className="form-label">
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+                {/* <div id="emailHelp" className="form-text">
               We'll never share your email with anyone else.
             </div> */}
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+              </div>
 
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-      </div>
-     </div>
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </>
   );

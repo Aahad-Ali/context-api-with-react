@@ -39,8 +39,8 @@ function Signup() {
   };
 
   return (
-    <div className="container">
-      <h4>This is Signup page</h4>
+    <div className="container signup-page">
+      <h1 className="signup-heading">This is Signup page</h1>
       <form onSubmit={signupHandler}>
         <div className="input-group mb-3">
           <input
