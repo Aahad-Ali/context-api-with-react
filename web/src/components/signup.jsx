@@ -30,6 +30,7 @@ function Signup() {
       });
 
       console.log("signup successful");
+      alert("Signup Successfully")
       setResult("signup successful");
     } catch (e) {
       console.log("e: ", e);
