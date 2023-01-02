@@ -2,14 +2,14 @@ import { useState } from "react";
 import axios from "axios";
 import "./signup.css";
 
-const baseUrl = "http://localhost:5001/api/v1";
+// const baseUrl = "http://localhost:5001/api/v1";
 
-// let baseUrl = "";
-// if (window.location.href.split(":")[0] === "http") {
-//   baseUrl = `http://localhost:5001/api/v1`;
-// } else {
-//   baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
-// }
+let baseUrl = "";
+if (window.location.href.split(":")[0] === "http") {
+  baseUrl = `http://localhost:5001/api/v1`;
+} else {
+  baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
+}
 
 function Signup() {
   const [result, setResult] = useState("");
