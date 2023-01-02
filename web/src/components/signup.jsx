@@ -6,9 +6,9 @@ import "./signup.css";
 
 let baseUrl = "";
 if (window.location.href.split(":")[0] === "http") {
-  baseUrl = `http://localhost:5001/api/v1`;
+  baseUrl = `http://localhost:5001`;
 } else {
-  baseUrl = `https://context-api-with-jwt.cyclic.app/api/v1`;
+  baseUrl = `https://context-api-with-jwt.cyclic.app`;
 }
 
 function Signup() {
@@ -22,7 +22,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-      let response = await axios.post(`${baseUrl}/signup`, {
+      let response = await axios.post(`${baseUrl}/api/v1/signup`, {
         firstName: name,
         lastName: name,
         email: email,
